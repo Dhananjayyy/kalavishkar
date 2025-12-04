@@ -1,97 +1,88 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {
-  Zap,
-  Server,
-  Route as RouteIcon,
-  Shield,
-  Waves,
-  Sparkles,
-} from 'lucide-react'
-import featuresData from '../content/features.json'
+import { Sparkles, Snowflake, Star } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
-  const iconMap = {
-    Zap,
-    Server,
-    Route: RouteIcon,
-    Shield,
-    Waves,
-    Sparkles,
-  }
-
-  const features = featuresData.features.map((feature) => {
-    const Icon = iconMap[feature.icon as keyof typeof iconMap]
-    return {
-      ...feature,
-      icon: <Icon className="w-12 h-12 text-cyan-400" />,
-    }
-  })
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
-      <section className="relative py-20 px-6 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10"></div>
-        <div className="relative max-w-5xl mx-auto">
-          <div className="flex items-center justify-center gap-6 mb-6">
-            <img
-              src="/tanstack-circle-logo.png"
-              alt="TanStack Logo"
-              className="w-24 h-24 md:w-32 md:h-32"
-            />
-            <h1 className="text-6xl md:text-7xl font-black text-white [letter-spacing:-0.08em]">
-              <span className="text-gray-300">TANSTACK</span>{' '}
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                START
-              </span>
-            </h1>
-          </div>
-          <p className="text-2xl md:text-3xl text-gray-300 mb-4 font-light">
-            The framework for next generation AI applications
-          </p>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8">
-            Full-stack framework powered by TanStack Router for React and Solid.
-            Build modern applications with server functions, streaming, and type
-            safety.
-          </p>
-          <div className="flex flex-col items-center gap-4">
-            <a
-              href="https://tanstack.com/start"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition-colors shadow-lg shadow-cyan-500/50"
-            >
-              Documentation
-            </a>
-            <p className="text-gray-400 text-sm mt-2">
-              Begin your TanStack Start journey by editing{' '}
-              <code className="px-2 py-1 bg-slate-700 rounded text-cyan-400">
-                /src/routes/index.tsx
-              </code>
-            </p>
-          </div>
+    <div className="min-h-screen bg-gradient-to-b from-red-900 via-red-800 to-green-900 flex flex-col items-center justify-center relative overflow-hidden text-white font-sans">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Snowflakes */}
+        <div className="absolute top-10 left-10 animate-pulse opacity-50">
+          <Snowflake className="w-12 h-12 text-white" />
         </div>
-      </section>
+        <div className="absolute top-20 right-20 animate-bounce opacity-40 delay-700">
+          <Snowflake className="w-8 h-8 text-white" />
+        </div>
+        <div className="absolute bottom-32 left-1/4 animate-pulse opacity-30 delay-300">
+          <Snowflake className="w-16 h-16 text-white" />
+        </div>
+        
+        {/* Stars */}
+        <div className="absolute top-1/4 right-1/3 animate-ping opacity-60">
+          <Star className="w-4 h-4 text-yellow-200" />
+        </div>
+        <div className="absolute bottom-1/3 left-10 animate-pulse opacity-50">
+          <Star className="w-6 h-6 text-yellow-100" />
+        </div>
+      </div>
 
-      <section className="py-16 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
-            >
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+      {/* Hanging Ornaments (CSS + SVG) */}
+      <div className="absolute top-0 w-full flex justify-center gap-16 md:gap-32 pointer-events-none">
+        {/* Ornament 1 */}
+        <div className="flex flex-col items-center animate-[swing_3s_ease-in-out_infinite] origin-top">
+          <div className="w-0.5 h-24 bg-yellow-200/50"></div>
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-lg flex items-center justify-center border-2 border-yellow-200">
+            <Sparkles className="w-8 h-8 text-yellow-100" />
+          </div>
         </div>
-      </section>
+        {/* Ornament 2 */}
+        <div className="flex flex-col items-center animate-[swing_4s_ease-in-out_infinite_reverse] origin-top mt-[-20px]">
+          <div className="w-0.5 h-32 bg-white/50"></div>
+          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-green-700 shadow-lg flex items-center justify-center border-2 border-green-300">
+             <Snowflake className="w-10 h-10 text-green-100" />
+          </div>
+        </div>
+         {/* Ornament 3 */}
+        <div className="flex flex-col items-center animate-[swing_3.5s_ease-in-out_infinite] origin-top">
+          <div className="w-0.5 h-20 bg-red-200/50"></div>
+          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-red-700 shadow-lg flex items-center justify-center border-2 border-red-300">
+            <Star className="w-6 h-6 text-red-100" />
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="z-10 text-center p-8 backdrop-blur-sm bg-black/10 rounded-3xl border border-white/10 shadow-2xl max-w-2xl mx-4">
+        <h1 className="text-6xl md:text-8xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-white to-yellow-200 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+          Kalavishkar
+        </h1>
+        
+        <div className="w-32 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto mb-8 opacity-80"></div>
+
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white drop-shadow-md font-serif tracking-wide">
+          Coming Soon
+        </h2>
+        
+        <p className="text-lg md:text-xl text-gray-200 max-w-lg mx-auto leading-relaxed">
+          We are crafting something spectacular.
+          <br />
+          Stay tuned for a celebration of art and culture!
+        </p>
+
+        
+      </div>
+
+      {/* Footer Decoration */}
+      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+      
+      <style>{`
+        @keyframes swing {
+          0%, 100% { transform: rotate(5deg); }
+          50% { transform: rotate(-5deg); }
+        }
+      `}</style>
     </div>
   )
 }

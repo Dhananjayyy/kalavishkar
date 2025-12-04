@@ -51,7 +51,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       </head>
       <body>
-        <Header />
+        {/* <Header /> */}
         {children}
         <TanStackDevtools
           config={{
