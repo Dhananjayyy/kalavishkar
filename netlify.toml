@@ -1,6 +1,25 @@
 [build]
   command = "npm run build"
-  dir = "dist/client"
+  publish = "dist/client"
+
+[functions]
+  directory = "dist/server"
+
+[[redirects]]
+  from = "/server/*"
+  to = "/.netlify/functions/server"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [dev]
   command = "vite dev"
   port = 3000
